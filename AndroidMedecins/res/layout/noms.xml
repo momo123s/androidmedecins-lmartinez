@@ -4,17 +4,14 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
 >
-
-    <TextView  
+ <TextView
+        android:id="@+id/label"  
         android:layout_width="fill_parent" 
         android:layout_height="wrap_content" 
-        android:text="Liste des départements"
+        android:text="Liste des medecins"
     >
     </TextView>
-    
-    <ListView android:id="@android:id/list"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"> 
-    </ListView>
-</LinearLayout>
+   
 
+        
+    ></LinearLayout> 
