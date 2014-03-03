@@ -86,36 +86,6 @@ public class DAO {
         return lesNoms;
 
     }
-    public static List<String> getLesNoms95() {
-        List<String> lesNoms = new ArrayList<String>();
-        try {
-            
-            URL myURL = new URL(url3);
-            Document doc;
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            doc = db.parse(myURL.openStream());
-            org.w3c.dom.Element racine = doc.getDocumentElement();
-            NodeList listeMed = racine.getElementsByTagName("Medecin");
-            for (int i = 0; i < listeMed.getLength(); i++) {
-                Node medecin = listeMed.item(i);
-                NodeList lesProprietes = medecin.getChildNodes();
-                for (int j = 0;j< lesProprietes.getLength(); j++) {
-                    if (lesProprietes.item(j).getNodeName().equals("nom")) {
-                        lesNoms.add(lesProprietes.item(j).getTextContent().trim());
-                        break;
-                    }
-                }
-            }
-            
-            
-            
-            
-        } catch (Exception ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return lesNoms;
-
-    }
+    
     
 }
