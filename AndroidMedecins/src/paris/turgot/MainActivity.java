@@ -30,9 +30,10 @@ public class MainActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id){
     
         //Toast.makeText(getApplicationContext(), "Bonjour "+lesNoms.get(position), Toast.LENGTH_LONG).show();
-        Intent inter = new Intent (this, Medecin.class);
-        inter.putExtra("leDep", lesDeps.getLesNoms());
+        Intent inter = new Intent (this, MedActivity.class);
+        inter.putExtra("leDep",lesDeps.get(position) );
         startActivity(inter);
         
     }
+  
 }
