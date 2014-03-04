@@ -55,8 +55,8 @@ public class DAO {
         }
         return lesDeps;
     }    
-    public static List<String> getLesMeds(String dep) {
-        List<String> lesNoms = new ArrayList<String>();
+    public static List<Medecin> getLesMeds(String dep) {
+        List<Medecin> lesMeds = new ArrayList<Medecin>();
         try {
             
             URL myURL = new URL(url2 + dep);
@@ -69,12 +69,34 @@ public class DAO {
             for (int i = 0; i < listeMed.getLength(); i++) {
                 Node medecin = listeMed.item(i);
                 NodeList lesProprietes = medecin.getChildNodes();
+                String nom = "", prenom="",adresse="", specialite="",tel="";
                 for (int j = 0;j< lesProprietes.getLength(); j++) {
                     if (lesProprietes.item(j).getNodeName().equals("nom")) {
-                        lesNoms.add(lesProprietes.item(j).getTextContent().trim());
-                        break;
+                        nom = lesProprietes.item(j).getTextContent().trim();
+                        
                     }
+                     if (lesProprietes.item(j).getNodeName().equals("prenom")) {
+                        prenom = lesProprietes.item(j).getTextContent().trim();
+                        
+                    }
+                      if (lesProprietes.item(j).getNodeName().equals("adresse")) {
+                        adresse= lesProprietes.item(j).getTextContent().trim();
+                        
+                    }
+                       if (lesProprietes.item(j).getNodeName().equals("specialite")) {
+                        specialite = lesProprietes.item(j).getTextContent().trim();
+                        
+                    }
+                        if (lesProprietes.item(j).getNodeName().equals("tel")) {
+                        tel = lesProprietes.item(j).getTextContent().trim();
+                        
+                    }
+                       
+                    
+                    
                 }
+                Medecin m = new Medecin(nom, prenom, adresse, specialite, tel);
+                lesMeds.add(m);
             }
             
             
@@ -83,7 +105,7 @@ public class DAO {
         } catch (Exception ex) {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return lesNoms;
+        return lesMeds;
 
     }
     
