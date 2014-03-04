@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package paris.turgot;
 
 import android.app.Activity;
@@ -12,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +19,7 @@ import java.util.List;
  * @author lmartinez
  */
 public class MedActivity extends ListActivity {
+
     private List<Medecin> lesMeds;
 
     /**
@@ -27,18 +28,18 @@ public class MedActivity extends ListActivity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        setContentView(R.layout.noms);
-        
-        lesMeds = DAO.getLesMeds(String dep);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lesMeds);
-        setListAdapter(adapter);        
-    }
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        setContentView(R.layout.noms);
-        TextView label = (TextView)findViewById(R.id.label);
+        setContentView(R.layout.meds);
+        TextView label = (TextView) findViewById(R.id.label);
         Intent inter = getIntent();
-        String nom = inter.getStringExtra("leNom");
-        label.setText(nom);
-    
+        String leDep = inter.getStringExtra("leDep");
+        DAO.getLesMeds(leDep);
+        List<Medecin>lesMeds = DAO.getLesMeds(leDep);
+        MedAdapter adapter = new MedAdapter(lesMeds, this);
+        setListAdapter(adapter);
+        
+        
+        
+
+    }
+
 }
