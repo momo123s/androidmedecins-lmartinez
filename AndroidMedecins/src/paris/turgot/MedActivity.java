@@ -34,6 +34,9 @@ public class MedActivity extends ListActivity {
         String leDep = inter.getStringExtra("leDep");
         DAO.getLesMeds(leDep);
         List<Medecin>lesMeds = DAO.getLesMeds(leDep);
+        
+        label.setText("Liste des medecins du : "+leDep);
+        
         MedAdapter adapter = new MedAdapter(lesMeds, this);
         setListAdapter(adapter);
         
