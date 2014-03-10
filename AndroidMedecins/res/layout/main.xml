@@ -4,13 +4,22 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
 >
-
+<imageView
+    android:id="@+id/monimage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/gsb"
+    />
+    
+        
+    
     <TextView  
         android:layout_width="fill_parent" 
         android:layout_height="wrap_content" 
         android:text="Liste des départements"
     >
     </TextView>
+    
     
     <ListView android:id="@android:id/list"
               android:layout_width="wrap_content"
