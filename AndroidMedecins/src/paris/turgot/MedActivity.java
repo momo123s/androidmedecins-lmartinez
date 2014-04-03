@@ -46,7 +46,7 @@ public class MedActivity extends ListActivity {
             public void onClick(View arg0) {
                 List<Medecin> rechercheMed = new ArrayList<Medecin>();
                 for (Medecin unMed : lesMeds) {
-                    if (unMed.getNom().startsWith(keyInput.getText().toString())) {
+                    if (unMed.getNom().toLowerCase().startsWith(keyInput.getText().toString().toLowerCase())) {
                         rechercheMed.add(unMed);
                     }
 
